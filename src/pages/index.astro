@@ -6,10 +6,15 @@ import Posts from '../components/Posts.astro'
 import Link from '../components/Link.astro'
 const allLinks = await getCollection('links');
 
+
 ---
 
 <Layout title="Welcome to my Blog">
+	
 	<main>
+		<nav>
+		{allLinks.map(l=> <Link url={l.data.url} title={l.data.title} icon={l.data.icon}/>)}
+		</nav>
 		<svg
 			class="astro-a"
 			width="495"
@@ -41,7 +46,7 @@ const allLinks = await getCollection('links');
 		<h2>Posts:</h2>
 	
 		{allBlogPosts.map(p => <Posts body={p.data.post} title={p.data.title}/>)}
-		{allLinks.map(l=> <Link url={l.data.url} title={l.data.title} icon={l.data.icon}/>)}
+	
 		</div>
 
 		
