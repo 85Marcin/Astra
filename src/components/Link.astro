@@ -1,0 +1,12 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+const alllinks = await getCollection('links');
+const { url, title, icon } = Astro.props;
+import {Icon} from 'astro-icon' 
+---
+
+<a href={url} class="flex gap-2 mt-3">
+    <Icon name={icon} width="30px"/>
+    <span>{title}</span>
+</a>
+

@@ -3,11 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection, getEntry } from 'astro:content';
 const allBlogPosts = await getCollection('blog');
 import Posts from '../components/Posts.astro'
+import Link from '../components/Link.astro'
+const allLinks = await getCollection('links');
 
-console.log(allBlogPosts)
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Welcome to my Blog">
 	<main>
 		<svg
 			class="astro-a"
@@ -33,12 +34,14 @@ console.log(allBlogPosts)
 				</linearGradient>
 			</defs>
 		</svg>
-		<h1 class="text-4xl">Hello World <span class="text-gradient">My name is Marcin</span></h1>
 		<div class="flex flex-col justify-center">
-		<img src="code-image.webp" class="w-[500px]"/><h2>Posts:</h2>
+		<h1 class="text-4xl">Hello World <span class="text-gradient">My name is Marcin</span></h1>
+		
+		<img src="code-image.webp" class="w-[500px] self-center"/>
+		<h2>Posts:</h2>
 	
 		{allBlogPosts.map(p => <Posts body={p.data.post} title={p.data.title}/>)}
-
+		{allLinks.map(l=> <Link url={l.data.url} title={l.data.title} icon={l.data.icon}/>)}
 		</div>
 
 		
