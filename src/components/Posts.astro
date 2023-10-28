@@ -1,0 +1,14 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+const allBlogPosts = await getCollection('blog');
+
+const { body, title } = Astro.props;
+
+---
+
+<div>
+<h2 class="text-4xl mt-8">{title}</h2>
+<p class="mt-8">{body}</p>
+</div>
+
+
